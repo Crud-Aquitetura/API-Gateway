@@ -9,6 +9,7 @@ const selectUrls = process.env.SELECT_INSTANCES?.split(',');
 const insertUrls = process.env.INSERT_INSTANCES?.split(',');
 const updateUrls = process.env.UPDATE_INSTANCES?.split(',');
 const deleteUrls = process.env.DELETE_INSTANCES?.split(',');
+const locaisUrls = process.env.LOCAIS_INSTANCES?.split(',');
 
 // Objeto que armazena as URLs configuradas e as URLs disponíveis para cada serviço
 const services: Record<string, IntanceModel> = {
@@ -31,7 +32,13 @@ const services: Record<string, IntanceModel> = {
     name: 'delete',
     urls: deleteUrls || [],
     available: []
+  },
+  locais: {
+    name:'locais',
+    urls: locaisUrls || [],
+    available: []
   }
+
 };
 
 // Função para verificar a saúde das instâncias e atualizar a lista de disponíveis

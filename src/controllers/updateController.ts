@@ -1,14 +1,16 @@
+// API_Gateway-main/src/controllers/updateController.ts
+
 import { Request, Response, NextFunction } from 'express';
 import { getAvailableInstance } from '../services/healthChecker';
 import axios from 'axios';
 import { EventModel } from '../models/Event';
 
 export async function updateController(req: Request, res: Response, next?: NextFunction) {
+  // ... (Validação dos campos obrigatórios permanece a mesma)
   const { nome, descricao, data_inicio, data_fim, local_id, status, preco_entrada, imagem_url } =
     req.body as Partial<EventModel>;
   const { id } = req.params;
 
-  // Validação dos campos obrigatórios
   if (!id) return next && next({ status: 400, message: 'Campos obrigatórios: id' });
   if (!nome) return next && next({ status: 400, message: 'Campos obrigatórios: nome' });
   if (!data_inicio) return next && next({ status: 400, message: 'Campos obrigatórios: data_inicio' });
@@ -18,13 +20,15 @@ export async function updateController(req: Request, res: Response, next?: NextF
   if (!preco_entrada) return next && next({ status: 400, message: 'Campos obrigatórios: preco_entrada' });
   if (!imagem_url) return next && next({ status: 400, message: 'Campos obrigatórios: imagem_url' });
 
-  const targetUrl = getAvailableInstance('update'); // Obtém uma instância disponível para "update"
-  if (!targetUrl) {
-    return next && next({ status: 503, message: 'Sem instância de update disponível' });
+  const backendBaseUrl = getAvailableInstance('backend'); // Pega a URL base do backend
+  if (!backendBaseUrl) {
+    return next && next({ status: 503, message: 'Sem instância de backend disponível' });
   }
 
   try {
-    const response = await axios.put(`${targetUrl}/${id}`, req.body); // Encaminha a requisição PUT
+    // CONSTRÓI A URL COMPLETA para o endpoint de UPDATE de eventos
+    // O ID é adicionado após o caminho base do events. Ex: http://localhost:35729/api/events/123
+    const response = await axios.put(`${backendBaseUrl}/api/events/${id}`, req.body); // Ajuste o '/api/events'
     res.status(response.status).json(response.data);
   } catch (error: any) {
     if (next) return next(error);

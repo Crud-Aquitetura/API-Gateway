@@ -1,13 +1,15 @@
+// API_Gateway-main/src/controllers/insertController.ts
+
 import { Request, Response, NextFunction } from 'express';
 import { getAvailableInstance } from '../services/healthChecker';
 import axios from 'axios';
 import { EventModel } from '../models/Event';
 
 export async function insertController(req: Request, res: Response, next?: NextFunction) {
+  // ... (Validação dos campos obrigatórios permanece a mesma)
   const { nome, descricao, data_inicio, data_fim, local_id, status, preco_entrada, imagem_url } =
     req.body as Partial<EventModel>;
 
-  // Validação dos campos obrigatórios
   if (!nome) return next && next({ status: 400, message: 'Campos obrigatórios: nome' });
   if (!data_inicio) return next && next({ status: 400, message: 'Campos obrigatórios: data_inicio' });
   if (!data_fim) return next && next({ status: 400, message: 'Campos obrigatórios: data_fim' });
@@ -16,13 +18,14 @@ export async function insertController(req: Request, res: Response, next?: NextF
   if (!preco_entrada) return next && next({ status: 400, message: 'Campos obrigatórios: preco_entrada' });
   if (!imagem_url) return next && next({ status: 400, message: 'Campos obrigatórios: imagem_url' });
 
-  const targetUrl = getAvailableInstance('insert'); // Obtém uma instância disponível para "insert"
-  if (!targetUrl) {
-    return next && next({ status: 503, message: 'Sem instância de insert disponível' });
+  const backendBaseUrl = getAvailableInstance('backend'); // Pega a URL base do backend
+  if (!backendBaseUrl) {
+    return next && next({ status: 503, message: 'Sem instância de backend disponível' });
   }
 
   try {
-    const response = await axios.post(targetUrl, req.body); // Encaminha a requisição POST com o corpo
+    // CONSTRÓI A URL COMPLETA para o endpoint de INSERT de eventos
+    const response = await axios.post(`${backendBaseUrl}/api/events`, req.body); // Ajuste o '/api/events'
     res.status(response.status).json(response.data);
   } catch (error: any) {
     if (next) return next(error);

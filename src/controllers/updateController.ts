@@ -1,7 +1,6 @@
 // API_Gateway-main/src/controllers/updateController.ts
 
 import { Request, Response, NextFunction } from 'express';
-import { getAvailableInstance } from '../services/healthChecker';
 import axios from 'axios';
 import { EventModel } from '../models/Event';
 

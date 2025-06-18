@@ -10,6 +10,11 @@ const app = express();
 app.use(express.json());
 app.use(cors()); // CORS habilitado para todas as origens por padrão
 
+// Health check endpoint - ADD THIS
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Rotas principais
 app.use('/', eventsRouter);
 

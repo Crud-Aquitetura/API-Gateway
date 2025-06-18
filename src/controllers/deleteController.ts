@@ -1,6 +1,7 @@
 // API_Gateway-main/src/controllers/deleteController.ts
 
 import { Request, Response, NextFunction } from 'express';
+import { backendBaseUrl } from '../config'; // Ajuste o caminho se seu arquivo de config estiver em outro lugar
 
 import axios from 'axios';
 

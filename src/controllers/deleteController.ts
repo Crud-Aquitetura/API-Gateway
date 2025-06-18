@@ -1,7 +1,7 @@
 // API_Gateway-main/src/controllers/deleteController.ts
 
 import { Request, Response, NextFunction } from 'express';
-import { getAvailableInstance } from '../services/healthChecker';
+
 import axios from 'axios';
 
 export async function deleteController(req: Request, res: Response, next?: NextFunction) {

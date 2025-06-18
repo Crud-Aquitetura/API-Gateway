@@ -1,7 +1,6 @@
 // API_Gateway-main/src/controllers/selectController.ts
 
 import { Request, Response, NextFunction } from 'express';
-import { getAvailableInstance } from '../services/healthChecker';
 import axios from 'axios';
 
 export async function selectController(req: Request, res: Response, next?: NextFunction) {

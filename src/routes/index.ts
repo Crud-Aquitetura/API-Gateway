@@ -10,6 +10,9 @@ import { loggerMiddleware } from '../middlewares/logger';
 const router = Router();
 
 // --- Rotas para Eventos ---
+router.get('/health', loggerMiddleware, (req, res)=>{
+  res.status(200)
+});
 router.get('/', loggerMiddleware, selectController);
 router.post('/', loggerMiddleware, insertController);
 router.put('/:id', loggerMiddleware, updateController);

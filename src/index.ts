@@ -23,6 +23,8 @@ app.use('/', eventsRouter);
 app.use(loggerMiddleware);
 app.use(errorHandler);
 
+const PORT = 3000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

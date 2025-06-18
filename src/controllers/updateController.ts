@@ -19,10 +19,7 @@ export async function updateController(req: Request, res: Response, next?: NextF
   if (!preco_entrada) return next && next({ status: 400, message: 'Campos obrigatórios: preco_entrada' });
   if (!imagem_url) return next && next({ status: 400, message: 'Campos obrigatórios: imagem_url' });
 
-  const backendBaseUrl = getAvailableInstance('backend'); // Pega a URL base do backend
-  if (!backendBaseUrl) {
-    return next && next({ status: 503, message: 'Sem instância de backend disponível' });
-  }
+
 
   try {
     // CONSTRÓI A URL COMPLETA para o endpoint de UPDATE de eventos

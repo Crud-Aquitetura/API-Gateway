@@ -12,6 +12,7 @@ app.use(cors()); // CORS habilitado para todas as origens por padrão
 
 // --- ADD THIS SECTION ---
 app.get('/health', (req, res) => {
+  console.log('Health check endpoint was hit!');
   res.status(200).send('OK');
 });
 // --- END OF ADDITION ---

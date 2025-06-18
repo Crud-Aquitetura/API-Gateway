@@ -3,6 +3,7 @@
 import { Request, Response, NextFunction } from 'express';
 import axios from 'axios';
 import { EventModel } from '../models/Event';
+import { backendBaseUrl } from '../config'; // Ajuste o caminho se seu arquivo de config estiver em outro lugar
 
 export async function updateController(req: Request, res: Response, next?: NextFunction) {
   // ... (Validação dos campos obrigatórios permanece a mesma)

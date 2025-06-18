@@ -1,6 +1,7 @@
 
 import { Request, Response, NextFunction } from 'express';
 import axios from 'axios';
+import { backendBaseUrl } from '../config'; // Ajuste o caminho se seu arquivo de config estiver em outro lugar
 
 export async function insertLocalController(req: Request, res: Response, next?: NextFunction) {
 

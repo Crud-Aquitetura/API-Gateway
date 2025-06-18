@@ -10,6 +10,8 @@ const app = express();
 app.use(express.json());
 app.use(cors()); // CORS habilitado para todas as origens por padrão
 
+export const backendBaseUrl: string = process.env.BACKEND_BASE_URL || 'http://localhost:8080/api';
+export const targetUrl: string = process.env.TARGET_URL || 'http://localhost:8080/api';
 
 
 // Rotas principais

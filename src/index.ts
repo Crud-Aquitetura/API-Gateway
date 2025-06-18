@@ -10,10 +10,11 @@ const app = express();
 app.use(express.json());
 app.use(cors()); // CORS habilitado para todas as origens por padrão
 
-// Health check endpoint - ADD THIS
+// --- ADD THIS SECTION ---
 app.get('/health', (req, res) => {
   res.status(200).send('OK');
 });
+// --- END OF ADDITION ---
 
 // Rotas principais
 app.use('/', eventsRouter);
@@ -21,8 +22,6 @@ app.use('/', eventsRouter);
 // Middlewares de tratamento de erro e logger (aplicados após as rotas)
 app.use(loggerMiddleware);
 app.use(errorHandler);
-
-const PORT =  3000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

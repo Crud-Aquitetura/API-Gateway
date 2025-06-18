@@ -1,36 +1,36 @@
 {
-    "name": "api_gateway",
-    "version": "1.0.0",
-    "description": "API Gateway para o sistema de eventos",
-    "main": "dist/index.js",
-    "scripts": {
-      "dev": "ts-node-dev --respawn src/index.ts",
-      "build": "tsc",
-      "start": "npm install --production && node dist/index.js"
-    },
-    "keywords": [
-      "api-gateway",
-      "load-balancing",
-      "microservices",
-      "express",
-      "typescript"
-    ],
-    "author": "",
-    "license": "ISC",
-    "type": "commonjs",
-    "dependencies": {
-      "@types/cors": "^2.8.18",
-      "axios": "^1.9.0",
-      "cors": "^2.8.5",
-      "dotenv": "^16.5.0",
-      "express": "^5.1.0",
-      "http-proxy": "^1.18.1",
-      "winston": "^3.17.0"
-    },
-    "devDependencies": {
-      "@types/express": "^5.0.1",
-      "@types/node": "^22.15.14",
-      "ts-node-dev": "^2.0.0",
-      "typescript": "^5.8.3"
-    }
+  "name": "api_gateway",
+  "version": "1.0.0",
+  "description": "API Gateway para o sistema de eventos",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "build": "tsc", // Comando para compilar
+    "start": "npm run build && node dist/index.js" // ALTERADO: primeiro build, depois roda
+  },
+  "keywords": [
+    "api-gateway",
+    "load-balancing",
+    "microservices",
+    "express",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@types/cors": "^2.8.18",
+    "axios": "^1.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "http-proxy": "^1.18.1",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.14",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
   }
+}

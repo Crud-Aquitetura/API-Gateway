@@ -1,6 +1,8 @@
 // API_Gateway-main/src/controllers/insertController.ts
 
 import { Request, Response, NextFunction } from 'express';
+import { backendBaseUrl } from '../config'; // Ajuste o caminho se seu arquivo de config estiver em outro lugar
+
 import axios from 'axios';
 import { EventModel } from '../models/Event';
 

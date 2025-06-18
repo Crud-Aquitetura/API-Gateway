@@ -8,10 +8,7 @@ export async function deleteController(req: Request, res: Response, next?: NextF
   const { id } = req.params;
   if (!id) return next && next({ status: 400, message: 'Campos obrigatórios: id' });
 
-  const backendBaseUrl = getAvailableInstance('backend'); // Pega a URL base do backend
-  if (!backendBaseUrl) {
-    return next && next({ status: 503, message: 'Sem instância de backend disponível' });
-  }
+
 
   try {
     // CONSTRÓI A URL COMPLETA para o endpoint de DELETE de eventos

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "API Gateway para o sistema de eventos",
   "main": "dist/index.js",
-  "scripts": { // Linha 8
+  "scripts": {
     "dev": "ts-node-dev --respawn src/index.ts",
     "build": "tsc",
     "start": "npm run build && node dist/index.js"

@@ -1,6 +1,5 @@
 
 import { Request, Response, NextFunction } from 'express';
-import { getAvailableInstance } from '../services/healthChecker';
 import axios from 'axios';
 
 export async function insertLocalController(req: Request, res: Response, next?: NextFunction) {

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "API Gateway para o sistema de eventos",
   "main": "dist/index.js",
-  "scripts": {
+  "scripts": { // Linha 8
     "dev": "ts-node-dev --respawn src/index.ts",
-    "build": "tsc", // Comando para compilar
-    "start": "npm run build && node dist/index.js" // ALTERADO: primeiro build, depois roda
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js"
   },
   "keywords": [
     "api-gateway",

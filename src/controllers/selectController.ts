@@ -4,10 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 import axios from 'axios';
 
 export async function selectController(req: Request, res: Response, next?: NextFunction) {
-  const backendBaseUrl = getAvailableInstance('backend'); // Pega a URL base do backend
-  if (!backendBaseUrl) {
-    return next && next({ status: 503, message: 'Sem instância de backend disponível' });
-  }
+
 
   try {
     // CONSTRÓI A URL COMPLETA para o endpoint de SELECT de eventos
